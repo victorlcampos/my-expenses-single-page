@@ -13,6 +13,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "#{LIBERTY_ROOT}grunt-init-templates", "/home/vagrant/.grunt-init", create: true
 
   config.vm.network "forwarded_port", guest: 8080, host: 8080
+  config.vm.network "forwarded_port", guest: 35729, host: 35729
+
   config.ssh.forward_agent = true
 
   config.vm.provider :docker do |docker|
