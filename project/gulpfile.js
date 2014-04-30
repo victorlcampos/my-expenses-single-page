@@ -66,8 +66,10 @@ gulp.task('unit-test', function () {
   var testFiles = scripts_to_process.concat([
                     'src/**/*.html',
                     'src/assets/vendor/angular-mocks/angular-mocks.js',
+                    'src/assets/vendor/jquery/dist/jquery.js',
                     'test/unit/**/*.test.js'
                   ]);
+
   return gulp.src(testFiles)
           .pipe(karma({
             configFile: 'test/karma.config.js',
@@ -76,7 +78,9 @@ gulp.task('unit-test', function () {
 });
 
 gulp.task('e2e-test', function () {
-  var testFiles = [ 'test/e2e/**/*.js' ]
+  var testFiles = [
+    'test/e2e/**/*.js'
+  ]
   return gulp.src(testFiles)
           .pipe(protractor({ configFile: "test/protractor-conf.js" }))
           .on('error', function(e) { throw e })
