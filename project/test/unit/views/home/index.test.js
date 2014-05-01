@@ -15,5 +15,9 @@ describe('Home index.html', function () {
 
         var newExpenseFrom = newExpenseDiv.find('form');
         expect(newExpenseFrom.get(0)).not.toBe(undefined);
+
+        expect(newExpenseFrom.find('input[ng-model="expense.value"]').get(0)).not.toBe(undefined);
+        expect(newExpenseFrom.find('input[ng-model="expense.date"]').get(0)).not.toBe(undefined);
+        expect(newExpenseFrom.find('input[ng-model="expense.category"]').get(0)).not.toBe(undefined);
     });
 });

@@ -1,9 +1,29 @@
 <div data-ng-init='helloWorld()' class='grid'>
-  <div class='new-expense col-16-16' id='new-expense'>
-    <form class='new-expense-form'>
+  <div class='new-expense col-12-12' id='new-expense'>
+
+    <form class='new-expense-form center form'>
+      <div class='form-fields'>
+        <div class='form-field'>
+          <label for='value'>Valor</label>
+          <input name='value' type="text" ng-model="expense.value"></input>
+        </div>
+      </div>
+      <div class='form-fields'>
+        <div class='form-field' >
+          <label for='date'>Data</label>
+          <input type="text" name='date' ng-model="expense.date"></input>
+        </div>
+      </div>
+      <div class='form-fields'>
+        <div class='form-field'>
+          <label for='category'>Categoria</label>
+          <input type="text" name='category' ng-model="expense.category"></input>
+        </div>
+      </div>
     </form>
+
   </div>
-  <div class='reports col-16-16'>
+  <div class='reports col-12-12'>
     {{hello}}
   </div>
 </div>
