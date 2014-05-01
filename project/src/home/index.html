@@ -1,29 +1,41 @@
 <div data-ng-init='helloWorld()' class='grid'>
-  <div class='new-expense col-12-12' id='new-expense'>
+  <div class='new-expense dark-color col-12-12' id='new-expense'>
 
-    <form class='new-expense-form center form'>
-      <div class='form-fields'>
-        <div class='form-field'>
+    <form class='new-expense-form center form' method="post">
+      <div class='fields grid'>
+        <div class='field col-12-12'>
           <label for='value'>Valor</label>
-          <input name='value' type="text" ng-model="expense.value"></input>
+          <input id='value' type="number"
+                            step="0.01"
+                            placeholder="10,32"
+                            ngPattern="[0-9]+([\.|,][0-9]+)?"
+                            ng-model="expense.value" required></input>
         </div>
       </div>
-      <div class='form-fields'>
-        <div class='form-field' >
+
+      <div class='fields grid'>
+        <div class='field col-12-12' >
           <label for='date'>Data</label>
-          <input type="text" name='date' ng-model="expense.date"></input>
+          <input type="date" id='date' ng-model="expense.date" required></input>
         </div>
       </div>
-      <div class='form-fields'>
-        <div class='form-field'>
+
+      <div class='fields grid'>
+        <div class='field col-12-12'>
           <label for='category'>Categoria</label>
-          <input type="text" name='category' ng-model="expense.category"></input>
+          <input type="text" id='category' ng-model="expense.category" required></input>
+        </div>
+      </div>
+
+      <div class='fields'>
+        <div class='field'>
+          <button class='button right' ng-click="update(user)">Salvar</button>
         </div>
       </div>
     </form>
 
   </div>
   <div class='reports col-12-12'>
-    {{hello}}
+    {{expense.value}}
   </div>
 </div>

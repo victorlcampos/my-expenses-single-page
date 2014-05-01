@@ -13,7 +13,6 @@ describe('HomeCtrl', function() {
   }));
 
   it('should have a method to print hello world', function() {
-    $scope.helloWorld();
-    expect($scope.hello).toBe('Hello World');
+
   });
 });

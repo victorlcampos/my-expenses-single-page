@@ -1,6 +1,5 @@
-myExpensesControllers.$inject = ['$scope', 'Home'];
-myExpensesControllers.controller('HomeCtrl', ['$scope', 'Home', function ($scope, Home) {
-  $scope.helloWorld = function() {
-    $scope.hello = "Hello World";
-  }
+myExpensesControllers.controller('HomeCtrl', ['$filter','$scope', 'Home', function ($filter, $scope, Home) {
+  $scope.expense = {
+    date    : $filter("date")(Date.now(), 'yyyy-MM-dd')
+  };
 }]);
