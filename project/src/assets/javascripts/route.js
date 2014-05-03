@@ -1,12 +1,12 @@
 myExpensesRoutes.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
-  $routeProvider.when('/', {
-    templateUrl: window.viewsPath.concat('home/index.html'),
-    controller: 'HomeCtrl',
+  $routeProvider.when('/expenses', {
+    templateUrl: window.viewsPath.concat('expenses/index.html'),
+    controller: 'ExpensesCtrl',
   });
 
   $routeProvider.otherwise({
-    redirectTo: '/'
+    redirectTo: '/expenses'
   });
 
   if(window.history && window.history.pushState){

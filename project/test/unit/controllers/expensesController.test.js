@@ -1,13 +1,13 @@
 'use strict';
 
-describe('HomeCtrl', function() {
+describe('ExpensesCtrl', function() {
   var $scope;
 
   beforeEach(module("myExpensesApp"));
   beforeEach(inject(function($rootScope, $controller) {
     $scope = $rootScope.$new();
 
-    $controller("HomeCtrl", {
+    $controller("ExpensesCtrl", {
       '$scope': $scope
     });
   }));

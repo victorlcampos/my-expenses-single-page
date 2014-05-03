@@ -1,12 +1,10 @@
 var myExpensesApp  = angular.module('myExpensesApp', [
   'myExpensesRoutes',
   'myExpensesControllers',
-  'myExpensesServices'
+  'myExpensesServices',
+  'dttt.dddDonut'
 ]);
 
 var myExpensesRoutes      = angular.module('myExpensesRoutes'     , ['ngRoute'   ]);
-var myExpensesControllers = angular.module('myExpensesControllers', []);
+var myExpensesControllers = angular.module('myExpensesControllers', [            ]);
 var myExpensesServices    = angular.module('myExpensesServices'   , ['ngResource']);
-
-window.viewsPath        = "../../";
-window.apiRemoteUrl     = "<%= apiRemoteUrl %>/";

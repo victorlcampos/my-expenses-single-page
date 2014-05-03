@@ -1,7 +1,6 @@
 var gulp        = require('gulp'),
     nodemon     = require('gulp-nodemon'),
     inject      = require('gulp-inject'),
-    template    = require('gulp-template'),
     livereload  = require('gulp-livereload'),
     clean       = require('gulp-clean'),
     runSequence = require('run-sequence'),
@@ -25,6 +24,9 @@ var scripts_to_process = [
   './src/assets/vendor/angular/angular.js',
   './src/assets/vendor/angular-route/angular-route.js',
   './src/assets/vendor/angular-resource/angular-resource.js',
+  './src/assets/vendor/d3/d3.js',
+  './src/assets/vendor/angular-d3-3ddonut-directive/angular-d3donut-directive.js',
+  './src/assets/config/**/*.js',
   './src/assets/javascripts/**/*.js'
 ]
 
@@ -56,7 +58,6 @@ gulp.task('styles', function() {
 
 gulp.task('scripts', function() {
   return gulp.src(scripts_to_process)
-    .pipe(template({apiRemoteUrl: 'http://localhost:1337'}))
     .pipe(gulp.dest('./build/assets/javascripts'))
     .pipe(inject("./build/index.html", {ignorePath: 'build'}))
     .pipe(gulp.dest('./build/'));
@@ -130,7 +131,6 @@ gulp.task('styles-deploy', function() {
 
 gulp.task('scripts-deploy', function() {
   return gulp.src(scripts_to_process)
-    .pipe(template({apiRemoteUrl: 'http://dry-woodland-3049.herokuapp.com/'}))
     .pipe(uglify())
     .pipe(concat('all.min.js'))
     .pipe(gulp.dest('./www/assets/javascripts'))

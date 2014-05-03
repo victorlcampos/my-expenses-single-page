@@ -20,7 +20,6 @@
     "gulp-inject": "~0.4.1",
     "gulp-uglify": "~0.2.1",
     "run-sequence": "~0.3.6",
-    "gulp-template": "~0.1.1",
     "gulp-gzip": "0.0.5",
     "gulp-bower": "0.0.4",
     "karma": "^0.12.9",
@@ -35,7 +34,8 @@
     "karma-ng-html2js-preprocessor": "^0.1.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp unit-test",
+    "start": "gulp"
   },
   "author": "",
   "license": "ISC"

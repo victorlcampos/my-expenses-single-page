@@ -1,7 +1,7 @@
 <div data-ng-init='helloWorld()' class='grid'>
   <div class='new-expense dark-color col-12-12' id='new-expense'>
 
-    <form class='new-expense-form center form' method="post">
+    <form class='new-expense-form center form' method="post" ng-submit="save(expense)">
       <div class='fields grid'>
         <div class='field col-12-12'>
           <label for='value'>Valor</label>
@@ -23,19 +23,23 @@
       <div class='fields grid'>
         <div class='field col-12-12'>
           <label for='category'>Categoria</label>
-          <input type="text" id='category' ng-model="expense.category" required></input>
+          <input type="text" id='category' ng-model="expense.category" list="categories" required></input>
+
+          <datalist id="categories">
+            <option ng-repeat="category in categories" value="{{category.label}}" >
+          </datalist>
         </div>
       </div>
 
       <div class='fields'>
         <div class='field'>
-          <button class='button right' ng-click="update(user)">Salvar</button>
+          <button type="submit" class='button right'>Salvar</button>
         </div>
       </div>
     </form>
 
   </div>
   <div class='reports col-12-12'>
-    {{expense.value}}
+    <div dttt-ddd-donut ng-model="categories"></div>
   </div>
 </div>
