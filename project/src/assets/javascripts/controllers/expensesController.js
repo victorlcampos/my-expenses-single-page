@@ -42,7 +42,4 @@ myExpensesControllers.controller('ExpensesCtrl', ['$filter','$scope', function (
       $scope.categories.push(category);
     }
   }
-
-
-
 }]);

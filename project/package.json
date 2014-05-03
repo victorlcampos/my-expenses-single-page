@@ -31,7 +31,8 @@
     "selenium-standalone": "^2.41.0-2.9.0",
     "gulp-karma": "0.0.4",
     "gulp-protractor": "0.0.7",
-    "karma-ng-html2js-preprocessor": "^0.1.0"
+    "karma-ng-html2js-preprocessor": "^0.1.0",
+    "lodash": "^2.4.1"
   },
   "scripts": {
     "test": "gulp unit-test",
