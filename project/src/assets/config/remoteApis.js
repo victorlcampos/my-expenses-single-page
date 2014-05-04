@@ -1,3 +1,3 @@
 window.remoteApis = {
-  expenses: 'http://localhost:3000'
+  myExpense: 'http://localhost:3000/v1',
 }

@@ -7,7 +7,7 @@ function generate(generator) {
   var data = generator(process.argv.slice(3));
 
   data.templates.forEach(function(item) {
-    var generatedFile = './src/'+item.generatedFile,
+    var generatedFile = './'+item.generatedFile,
         template      = fs.readFileSync('./generators/templates/'+item.file),
         compiled      = _.template(template);
 

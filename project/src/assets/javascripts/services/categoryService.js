@@ -1,5 +1,5 @@
-myExpensesServices.factory('Expense', ['$resource', function($resource){
-  return $resource(window.remoteApis.expenses.concat('/:id'), {}, {
+myExpensesServices.factory('Category', ['$resource', function($resource){
+  return $resource(window.remoteApis.myExpense.concat('/categories/:id'), {}, {
     'get':    {method:'GET'               },
     'create': {method:'POST'              },
     'update': {method:'PUT'               },
@@ -8,4 +8,3 @@ myExpensesServices.factory('Expense', ['$resource', function($resource){
     'delete': {method:'DELETE'            }
   });
 }]);
-

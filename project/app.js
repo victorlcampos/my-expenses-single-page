@@ -1,12 +1,18 @@
 var static = require('node-static');
 
 var urlConfig = {'development': './build', 'production': './www'}
-var url       = urlConfig[process.env.NODE_ENV || 'development'];
+var cache     = {
+  'development': {},
+  'production': { gzip: true, cache: 7200 }
+}
+var env = process.env.NODE_ENV || 'development'
 
-console.log('Env = ' + (process.env.NODE_ENV || 'development'))
+var url       = urlConfig[env];
+
+console.log('Env = ' + env)
 console.log('listen url = '+ url);
 
-var fileServer = new static.Server(url, { gzip: true, cache: 7200 });
+var fileServer = new static.Server(url, cache[env]);
 
 require('http').createServer(function (request, response) {
     request.addListener('end', function () {

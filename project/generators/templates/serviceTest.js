@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Expense', function() {
+describe('<%= className %>', function() {
   var httpBackend,
       api_url,
       response,
       service;
 
   beforeEach(module("myExpensesApp"));
-  beforeEach(inject(function($rootScope, $httpBackend, $window, Expense) {
-    api_url = $window.remoteApis.myExpense+'/expenses';
+  beforeEach(inject(function($rootScope, $httpBackend, $window, <%= className %>) {
+    api_url = $window.remoteApis.<%= name %>s;
     httpBackend = $httpBackend;
-    service = Expense;
+    service = <%= className %>;
   }));
 
   describe('#query', function() {
@@ -35,13 +35,13 @@ describe('Expense', function() {
     }));
 
     it('should have a method to print hello world', function() {
-      var expenses = service.query();
+      var <%= name %>s = service.query();
       httpBackend.flush();
 
-      expect(expenses[0].id).toEqual(response[0].id);
-      expect(expenses[1].id).toEqual(response[1].id);
-      expect(expenses[2].id).toEqual(response[2].id);
-      expect(expenses[3].id).toEqual(response[3].id);
+      expect(<%= name %>s[0].id).toEqual(response[0].id);
+      expect(<%= name %>s[1].id).toEqual(response[1].id);
+      expect(<%= name %>s[2].id).toEqual(response[2].id);
+      expect(<%= name %>s[3].id).toEqual(response[3].id);
     });
   });
 });

@@ -1,15 +1,26 @@
-myExpensesControllers.controller('ExpensesCtrl', ['$filter','$scope', function ($filter, $scope) {
+myExpensesControllers.controller('ExpensesCtrl', ['$filter','$scope', 'Category', function ($filter, $scope, Category) {
   $scope.expense = {
     date : $filter("date")(Date.now(), 'yyyy-MM-dd')
   };
 
-  $scope.categories = [
-    {label:"Basic", color:"#3366CC", value:1000*Math.random()},
-    {label:"Plus" , color:"#DC3912", value:1000*Math.random()},
-    {label:"Lite" , color:"#FF9900", value:1000*Math.random()},
-    {label:"Elite", color:"#109618", value:1000*Math.random()},
-    {label:"Delux", color:"#990099", value:1000*Math.random()}
-  ];
+  $scope.categories    = Category.query();
+  $scope.subcategories = {};
+  $scope.expense       = {};
+
+  $scope.$watch('expense.category', function(newCategory) {
+
+    if (newCategory) {
+      var result = $scope.categories.filter(function( obj ) {
+        return obj.label == newCategory;
+      });
+
+      if (result[0]) {
+        $scope.subcategories = result[0].subcategories;
+      } else {
+        $scope.subcategories = {};
+      }
+    }
+  }, true);
 
   function getRandomColor() {
     var letters = '0123456789ABCDEF'.split('');

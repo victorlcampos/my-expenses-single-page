@@ -8,8 +8,4 @@ myExpensesRoutes.config(['$routeProvider', '$locationProvider', function($routeP
   $routeProvider.otherwise({
     redirectTo: '/expenses'
   });
-
-  if(window.history && window.history.pushState){
-    $locationProvider.html5Mode(true);
-  }
 }]);

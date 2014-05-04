@@ -4,7 +4,11 @@ module.exports = function(args) {
   return {
     templates: [{
       file: 'service.js',
-      generatedFile: 'assets/javascripts/services/'+name+'Service.js'
+      generatedFile: 'src/assets/javascripts/services/'+name+'Service.js'
+    },
+    {
+      file: 'serviceTest.js',
+      generatedFile: 'test/unit/services/'+name+'Service.test.js'
     }],
     replaceWords: {
       className: name.charAt(0).toUpperCase() + name.slice(1),
