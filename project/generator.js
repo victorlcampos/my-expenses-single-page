@@ -8,7 +8,7 @@ function generate(generator) {
 
   data.templates.forEach(function(item) {
     var generatedFile = './'+item.generatedFile,
-        template      = fs.readFileSync('./generators/templates/'+item.file),
+        template      = fs.readFileSync('./generators/templates/'+generatorName+'/'+item.file),
         compiled      = _.template(template);
 
     fs.writeFileSync(generatedFile, compiled(data.replaceWords));

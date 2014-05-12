@@ -1,4 +1,4 @@
-describe('Home index.html', function () {
+describe('Expenses index.html', function () {
     var  template, scope, filter;
     beforeEach(module('templates'));
 
@@ -6,21 +6,23 @@ describe('Home index.html', function () {
         var templateHtml = $templateCache.get('expenses/index.html');
         $scope = $rootScope.$new();
 
-        $scope.categories = [
-            {label:"Basic", color:"#3366CC", value:100, subcategories: [{label: "Super Basic", color:"#3366CC", value:50}, {label: "For Dummies", color:"#3366CC", value:50}]},
-            {label:"Plus" , color:"#DC3912", value:200},
-            {label:"Lite" , color:"#FF9900", value:300},
-            {label:"Elite", color:"#109618", value:400},
-            {label:"Delux", color:"#990099", value:500}
-        ];
+        $scope.new = function() {
+            $scope.categories = [
+                {label:"Basic", color:"#3366CC", value:100, subcategories: [{label: "Super Basic", color:"#3366CC", value:50}, {label: "For Dummies", color:"#3366CC", value:50}]},
+                {label:"Plus" , color:"#DC3912", value:200},
+                {label:"Lite" , color:"#FF9900", value:300},
+                {label:"Elite", color:"#109618", value:400},
+                {label:"Delux", color:"#990099", value:500}
+            ];
 
-        $scope.subcategories = [
-            {label: "Super Basic", color:"#3366CC", value:50},
-            {label: "For Dummies", color:"#3366CC", value:50}
-        ];
+            $scope.subcategories = [
+                {label: "Super Basic", color:"#3366CC", value:50},
+                {label: "For Dummies", color:"#3366CC", value:50}
+            ];
 
-        $scope.expense = {
-            date : $filter("date")(Date.now(), 'yyyy-MM-dd')
+            $scope.expense = {
+                date : $filter("date")(Date.now(), 'yyyy-MM-dd')
+            };
         };
 
         template = $($compile(templateHtml)($scope));
@@ -35,29 +37,29 @@ describe('Home index.html', function () {
             var newExpenseDiv = template.find('#new-expense');
             expect(newExpenseDiv.get(0)).not.toBe(undefined);
 
-            var newExpenseFrom = newExpenseDiv.find('form');
-            expect(newExpenseFrom.get(0)).not.toBe(undefined);
+            var newExpenseForm = newExpenseDiv.find('form');
+            expect(newExpenseForm.get(0)).not.toBe(undefined);
 
-            var value = newExpenseFrom.find('input[ng-model="expense.value"]');
+            var value = newExpenseForm.find('input[ng-model="expense.value"]');
             expect(value.get(0)).not.toBe(undefined);
 
-            var date = newExpenseFrom.find('input[ng-model="expense.date"]');
+            var date = newExpenseForm.find('input[ng-model="expense.date"]');
             expect(date.get(0)).not.toBe(undefined);
 
-            var category = newExpenseFrom.find('input[ng-model="expense.category"][list="categories"]');
+            var category = newExpenseForm.find('input[ng-model="expense.category"][list="categories"]');
             expect(category.get(0)).not.toBe(undefined);
 
-            var datalist = newExpenseFrom.find('#categories');
+            var datalist = newExpenseForm.find('#categories');
             expect(datalist.get(0)).not.toBe(undefined);
 
             scope.categories.forEach(function(category) {
                 expect(datalist.find('option[value="'+category.label+'"]').get(0)).not.toBe(undefined);
             });
 
-            var subCategory = newExpenseFrom.find('input[ng-model="expense.subcategory"][list="subcategories"]');
+            var subCategory = newExpenseForm.find('input[ng-model="expense.subcategory"][list="subcategories"]');
             expect(subCategory.get(0)).not.toBe(undefined);
 
-            var subCategoriesDatalist = newExpenseFrom.find('#subcategories');
+            var subCategoriesDatalist = newExpenseForm.find('#subcategories');
             expect(subCategoriesDatalist.get(0)).not.toBe(undefined);
 
             scope.subcategories.forEach(function(subcategories) {
@@ -67,16 +69,16 @@ describe('Home index.html', function () {
 
         it('click submit should call save function', function() {
             var newExpenseDiv = template.find('#new-expense');
-            var newExpenseFrom = newExpenseDiv.find('form');
+            var newExpenseForm = newExpenseDiv.find('form');
 
-            var submit         = newExpenseFrom.find('button');
+            var submit         = newExpenseForm.find('button');
             expect(submit.get(0)).not.toBe(undefined);
 
             scope.expense = {
                 value: 100
             }
 
-            scope.save = function(expense) {
+            scope.create = function(expense) {
                 scope.value = expense.value;
             };
 
@@ -86,16 +88,16 @@ describe('Home index.html', function () {
 
         it('show subcategories when select category', function() {
             var newExpenseDiv = template.find('#new-expense');
-            var newExpenseFrom = newExpenseDiv.find('form');
+            var newExpenseForm = newExpenseDiv.find('form');
 
-            var submit         = newExpenseFrom.find('button');
+            var submit         = newExpenseForm.find('button');
             expect(submit.get(0)).not.toBe(undefined);
 
             scope.expense = {
                 value: 100
             }
 
-            scope.save = function(expense) {
+            scope.create = function(expense) {
                 scope.value = expense.value;
             };
 

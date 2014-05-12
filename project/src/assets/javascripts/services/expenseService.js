@@ -1,11 +1,11 @@
-myExpensesServices.factory('Expense', ['$resource', function($resource){
-  return $resource(window.remoteApis.myExpense.concat('/expenses/:id'), {}, {
-    'get':    {method:'GET'               },
-    'create': {method:'POST'              },
-    'update': {method:'PUT'               },
-    'query':  {method:'GET', isArray:true },
-    'remove': {method:'DELETE'            },
-    'delete': {method:'DELETE'            }
+myExpensesServices.factory('Expense', ['$resource', '$filter', function($resource, $filter){
+  var service = $resource(window.remoteApis.myExpense.concat('/expenses/:id'), {}, {
+    'create': {method:'POST', withCredentials: true },
   });
+
+  service.prototype.date = $filter("date")(Date.now(), 'yyyy-MM-dd');
+
+
+  return service;
 }]);
 

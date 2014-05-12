@@ -9,7 +9,8 @@ describe('expense index view', function() {
   });
 
   it('should show donut chart', function() {
-    expect(browser.getLocationAbsUrl()).toMatch(browser.baseUrl+"expenses");
-    expect(ptor.isElementPresent(by.css('#donut'))).toBe(true);
+    expect(browser.getLocationAbsUrl()).toMatch(browser.baseUrl+"#/expenses");
+    expect(ptor.isElementPresent(by.css('#categoriespiechart'))).toBe(true);
+    expect(ptor.isElementPresent(by.css('#subcategoriespiechart'))).toBe(true);
   });
 });

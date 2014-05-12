@@ -1,7 +1,7 @@
-<div data-ng-init='helloWorld()' class='grid'>
-  <div class='new-expense dark-color col-12-12' id='new-expense'>
+<div data-ng-init='new()' class='grid'>
+  <div class='valley dark-color col-12-12' id='new-expense'>
 
-    <form class='new-expense-form center form' method="post" ng-submit="save(expense)">
+    <form class='new-expense-form center form' method="post" ng-submit="create(expense)">
       <div class='fields grid'>
         <div class='field col-12-12'>
           <label for='value'>Valor</label>
@@ -29,8 +29,9 @@
             <option ng-repeat="category in categories" value="{{category.label}}" >
           </datalist>
         </div>
+
         <div class='field col-6-12'>
-          <label for='category'>Sub Categoria</label>
+          <label for='category'>Subcategoria</label>
           <input type="text" id='category' ng-model="expense.subcategory" list="subcategories" required></input>
 
           <datalist id="subcategories">
@@ -48,6 +49,28 @@
 
   </div>
   <div class='reports col-12-12'>
-    <div dttt-ddd-donut ng-model="categories"></div>
+    <div class='report col-6-12'>
+      <div class='title'>
+        <h2>Gasto por categoria</h2>
+      </div>
+      <div class='filter'>
+      </div>
+      <div class='chart'>
+        <div dttt-ddd-donut ng-model="categories" chart-id='categoriespiechart'></div>
+      </div>
+    </div>
+
+    <div class='report col-6-12'>
+      <div class='title'>
+        <h2>Gasto por subcategoria</h2>
+      </div>
+      <div class='filter'>
+        <select ng-model="subcategoriesChart" ng-options="category.subcategories as category.label for category in categories">
+        </select>
+      </div>
+      <div class='chart'>
+        <div dttt-ddd-donut ng-model="subcategoriesChart" chart-id='subcategoriespiechart'></div>
+      </div>
+    </div>
   </div>
 </div>

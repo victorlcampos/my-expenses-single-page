@@ -2,7 +2,7 @@
   <div class='col-8-12 title light-color'>
     Minhas Despesas
   </div>
-  <div class='col-4-12 right menu light-color'>
-    Olá Fulano
+  <div class='col-4-12 right menu light-color' ng-if='currentSession.currentUser()'>
+    Olá {{currentSession.currentUser().name}} <a href ng-click="currentSession.$signOut()">sair</a>
   </div>
 </div>

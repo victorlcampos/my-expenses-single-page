@@ -24,6 +24,7 @@ var scripts_to_process = [
   './src/assets/vendor/angular/angular.js',
   './src/assets/vendor/angular-route/angular-route.js',
   './src/assets/vendor/angular-resource/angular-resource.js',
+  './src/assets/vendor/angular-cookies/angular-cookies.js',
   './src/assets/vendor/d3/d3.js',
   './src/assets/vendor/angular-d3-3ddonut-directive/angular-d3donut-directive.js',
   './src/assets/config/**/*.js',

@@ -5,6 +5,6 @@ var myExpensesApp  = angular.module('myExpensesApp', [
   'dttt.dddDonut'
 ]);
 
-var myExpensesRoutes      = angular.module('myExpensesRoutes'     , ['ngRoute'   ]);
-var myExpensesControllers = angular.module('myExpensesControllers', [            ]);
-var myExpensesServices    = angular.module('myExpensesServices'   , ['ngResource']);
+var myExpensesRoutes      = angular.module('myExpensesRoutes'     , ['ngRoute'                ]);
+var myExpensesControllers = angular.module('myExpensesControllers', [                         ]);
+var myExpensesServices    = angular.module('myExpensesServices'   , ['ngResource', 'ngCookies']);
