@@ -1,11 +1,11 @@
 myExpensesControllers.controller('SessionsCtrl', ['$filter','$scope', '$location', 'Session', function ($filter, $scope, $location, Session) {
   $scope.new = function() {
-    session = Session.currentSession();
+    session = Session.currentSession;
 
     if (session.isAuthenticated()) {
       $location.path('/');
     } else {
-      $scope.session = Session.currentSession();
+      $scope.session = Session.currentSession;
     };
   }
 

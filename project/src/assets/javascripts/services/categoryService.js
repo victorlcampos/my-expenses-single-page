@@ -1,5 +1,5 @@
-myExpensesServices.factory('Category', ['$resource', function($resource){
-  return $resource(window.remoteApis.myExpense.concat('/categories/:id'), {}, {
-    'query':  {method:'GET', isArray:true, withCredentials: true },
+myExpensesServices.factory('Category', ['$resource', '$cookieStore', function($resource, $cookieStore){
+  return $resource(window.remoteApis.myExpense.concat('/categories/:id'), { token: $cookieStore.get('token') }, {
+    'query':  {method:'GET', isArray:true },
   });
 }]);

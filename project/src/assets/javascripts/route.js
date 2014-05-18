@@ -25,14 +25,14 @@ myExpensesRoutes.config(['$routeProvider', '$locationProvider', function($routeP
 
 myExpensesRoutes.run(['$rootScope', '$location', 'Session', function ($rootScope, $location, Session) {
 
+  currentSession            = Session.currentSession;
+  $rootScope.currentSession = currentSession;
+
   $rootScope.$on("$routeChangeStart", function (event, next, current) {
-    currentSession = Session.currentSession();
     route = next.$$route;
 
     if((typeof(route.authenticate) === "undefined" || route.authenticate) && !currentSession.isAuthenticated()){
       $location.path( "/login" );
-    } else {
-      $rootScope.currentSession = currentSession;
     }
   })
 

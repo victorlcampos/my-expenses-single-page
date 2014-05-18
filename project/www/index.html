@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="myExpensesApp">
+<head>
+  <title>My Expenses</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!-- inject:html -->
+  <!-- any *.html files among your sources will go here as: <link rel="import" href="FILE"> -->
+  <!-- endinject -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/assets/stylesheets/all.min.css">
+  <!-- endinject -->
+</head>
+<body>
+  <div>
+    <div ng-include="'/partials/header.html'"></div>
+    <div ng-view></div>
+    <div class='footer'></div>
+  </div>
+  <!-- inject:js -->
+  <script src="/assets/javascripts/all.min.js"></script>
+  <!-- endinject -->
+</body>
+</html>
